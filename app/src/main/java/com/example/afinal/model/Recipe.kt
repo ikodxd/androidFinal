@@ -4,9 +4,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "recipes") // Добавлено
+@Entity(tableName = "recipes")
 data class Recipe(
-    @PrimaryKey // Добавлено
+    @PrimaryKey
     @SerializedName("idMeal")
     val id: String,
 
@@ -20,5 +20,7 @@ data class Recipe(
     val instructions: String,
 
     @SerializedName("strMealThumb")
-    val thumb: String
+    val thumb: String,
+
+    var isFavorite: Boolean = false // Добавлено это поле
 )

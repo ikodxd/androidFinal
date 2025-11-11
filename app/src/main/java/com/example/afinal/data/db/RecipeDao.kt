@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update // Добавлено
 import com.example.afinal.model.Recipe
 
 @Dao
@@ -13,4 +14,13 @@ interface RecipeDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertRecipes(recipes: List<Recipe>)
+
+    @Query("SELECT * FROM recipes WHERE id = :id") // Добавлено
+    suspend fun getRecipeById(id: String): Recipe?
+
+    @Update // Добавлено
+    suspend fun updateRecipe(recipe: Recipe)
+
+    @Query("SELECT * FROM recipes WHERE isFavorite = 1") // Добавлено
+    suspend fun getFavoriteRecipes(): List<Recipe>
 }
