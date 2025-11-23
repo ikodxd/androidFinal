@@ -9,18 +9,13 @@ data class Recipe(
     @PrimaryKey
     @SerializedName("idMeal")
     val id: String,
-
     @SerializedName("strMeal")
     val name: String,
-
     @SerializedName("strCategory")
-    val category: String,
-
+    val category: String?, // Changed to nullable to prevent crash
     @SerializedName("strInstructions")
     val instructions: String,
-
     @SerializedName("strMealThumb")
     val thumb: String,
-
-    var isFavorite: Boolean = false // Добавлено это поле
+    var isFavorite: Boolean = false
 )
