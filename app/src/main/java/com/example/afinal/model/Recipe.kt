@@ -12,7 +12,7 @@ data class Recipe(
     @SerializedName("strMeal")
     val name: String,
     @SerializedName("strCategory")
-    val category: String?, // Changed to nullable to prevent crash
+    val category: String?,
     @SerializedName("strInstructions")
     val instructions: String,
     @SerializedName("strMealThumb")

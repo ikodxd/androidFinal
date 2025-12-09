@@ -9,4 +9,4 @@ interface RecipeApiService {
     suspend fun searchRecipes(@Query("s") query: String): RecipeResponse
 }
 
-data class RecipeResponse(val meals: List<Recipe>?) // Changed to nullable
+data class RecipeResponse(val meals: List<Recipe>?)
