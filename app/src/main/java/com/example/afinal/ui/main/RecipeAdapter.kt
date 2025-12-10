@@ -1,10 +1,12 @@
 package com.example.afinal.ui.main
 
+import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.afinal.R
 import com.example.afinal.databinding.ItemRecipeBinding
 import com.example.afinal.model.Recipe
 import com.example.afinal.ui.detail.RecipeDetailActivity
@@ -39,6 +41,7 @@ class RecipeAdapter(private var recipes: List<Recipe>) : RecyclerView.Adapter<Re
                     putExtra("recipe_id", recipe.id)
                 }
                 context.startActivity(intent)
+                (context as? Activity)?.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
             }
         }
     }

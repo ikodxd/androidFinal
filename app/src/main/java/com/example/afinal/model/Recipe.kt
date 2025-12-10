@@ -14,7 +14,7 @@ data class Recipe(
     @SerializedName("strCategory")
     val category: String?,
     @SerializedName("strInstructions")
-    val instructions: String,
+    val instructions: String?,
     @SerializedName("strMealThumb")
     val thumb: String,
     var isFavorite: Boolean = false

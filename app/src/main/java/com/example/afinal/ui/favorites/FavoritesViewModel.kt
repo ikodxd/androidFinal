@@ -18,15 +18,25 @@ class FavoritesViewModel(application: Application) : AndroidViewModel(applicatio
     private val _favoriteRecipes = MutableLiveData<List<Recipe>>()
     val favoriteRecipes: LiveData<List<Recipe>> = _favoriteRecipes
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
+    private val _isEmpty = MutableLiveData<Boolean>()
+    val isEmpty: LiveData<Boolean> = _isEmpty
+
     init {
         val recipeDao = RecipeDatabase.getDatabase(application).recipeDao()
         repository = RecipeRepository(RetrofitInstance.api, recipeDao)
         loadFavoriteRecipes()
     }
 
-    private fun loadFavoriteRecipes() {
+    fun loadFavoriteRecipes() {
         viewModelScope.launch {
-            _favoriteRecipes.postValue(repository.getFavoriteRecipes())
+            _isLoading.postValue(true)
+            val result = repository.getFavoriteRecipes()
+            _favoriteRecipes.postValue(result)
+            _isEmpty.postValue(result.isEmpty())
+            _isLoading.postValue(false)
         }
     }
 }

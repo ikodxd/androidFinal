@@ -70,4 +70,7 @@ dependencies {
 
     // Coil
     implementation("io.coil-kt:coil:2.5.0")
+
+    // RecyclerView Animators
+    implementation("jp.wasabeef:recyclerview-animators:4.0.2")
 }
